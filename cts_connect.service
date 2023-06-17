@@ -1,0 +1,25 @@
+[Unit]
+  Description=Cts_Connect
+  After=network.target
+  After=network-online.target
+
+[Service]
+  Type=simple
+
+  PIDFile=/var/run/cts_connect.pid
+
+  User=admincts
+  Group=admincts
+
+  Environment=PATH=/usr/local/bin:/usr/bin:/bin:/usr/share/cts/bin
+  
+  OOMScoreAdjust=-100
+
+  ExecStart=/bin/bash /usr/bin/cts_connect_cap.sh start
+  ExecStop=/bin/bash /usr/bin/cts_connect_cap.sh stop
+  Restart=on-failure
+  RestartSec=5s
+
+[Install]
+  WantedBy=multi-user.target
+
