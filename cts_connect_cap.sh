@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [ "$1" == "start" ] && cts connect -auto &     
-sleep 10    
+sleep 8    
 
 while true : 
 do
